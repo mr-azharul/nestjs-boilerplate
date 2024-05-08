@@ -1,73 +1,80 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="https://github.com/mr-azharul/nestjs-boilerplate" target="blank"><img src="https://miro.medium.com/v2/resize:fit:875/1*JJt5oe-2rPU3s2cx_xUV5A.png" width="500" alt="NestJs Boilerplate" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
+<p align="center">A scalable, clean architecture, ready-to-use NestJs boilerplate</p>
+<!-- <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
 <a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+<a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+</p> -->
+
+<!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+This repository provides a boilerplate for building NestJS applications with TypeORM for database interactions and PostgreSQL as the database engine. It offers a solid foundation for rapid NestJS development.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Features
+* NestJS framework pre-configured
+* TypeORM integration for data modeling and database access
+* PostgreSQL database setup (configuration for local development)
 
-## Installation
+## Getting Started
+1. Clone the Repository:
+```Bash
+  git clone https://github.com/mr-azharul/nestjs-boilerplate.git
+```
+2. Install Dependencies:
+```Bash
+cd nestjs-boilerplate
+npm install
+```
+3. Configure Database (Local Development):
+    1. Create a file named .env at the root of the project (ignore this file in version control).
+    2. Add your PostgreSQL connection details to the .env file:
 
+```Bash
+DATABASE_PORT = 5432
+DATABASE_NAME = "DBNAME"
+DATABASE_HOST = "DBHOST"
+DATABASE_USERNAME = "DBUSER"
+DATABASE_PASSWORD = "DBPASSWORD"
+```
+Update the connection details if your PostgreSQL setup differs
+
+4. Run the Application:
+```Bash
+npm run start
+```
+This will start the NestJS development server, typically accessible at http://localhost:4200 (port might vary).
+
+## Project Structure
 ```bash
-$ npm install
+src/
+├── app/                   # Core application module
+├── common/                 # Reusable utilities, configurations, etc.
+├── config/                 # Environment variable management
+├── database/               # Database connection and models
+│   ├── database.module.ts  # Database connection module
+│   └── ...                 # Entity files (models)
+├── features/               # Feature modules for specific functionalities
+│   └── ...                 # (customizable based on your needs)
+└── main.ts                 # Application entry point
 ```
 
-## Running the app
+## Customization
+* Create new feature modules within the features directory to organize your application logic.
+* Define your database entities (models) in the database directory.
+* Extend the app.module.ts to import your custom modules and configure the application further.
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Deployment
+This boilerplate provides a starting point for local development. For production deployments, adapt the database configuration, environment variables, and security considerations to your specific hosting environment.
 
 ## License
+This boilerplate is distributed under the [MIT licensed](LICENSE).
 
-Nest is [MIT licensed](LICENSE).
+## Contributing
+Feel free to fork the repository and contribute improvements. We appreciate pull requests!
