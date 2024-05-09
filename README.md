@@ -21,6 +21,11 @@ This repository provides a boilerplate for building NestJS applications with Typ
 * NestJS framework pre-configured
 * TypeORM integration for data modeling and database access
 * PostgreSQL database setup (configuration for local development)
+* JWT authentication for protected API endpoints
+* Role based authorization with role guard
+* Password hasing with salt round
+* Helmet for set security-related HTTP headers
+* Rate Limit to protect applications from brute-force attacks
 
 ## Getting Started
 1. Clone the Repository:
@@ -54,20 +59,61 @@ This will start the NestJS development server, typically accessible at http://lo
 ## Project Structure
 ```bash
 src/
-├── app/                   # Core application module
-├── common/                 # Reusable utilities, configurations, etc.
-├── config/                 # Environment variable management
-├── database/               # Database connection and models
-│   ├── database.module.ts  # Database connection module
-│   └── ...                 # Entity files (models)
-├── features/               # Feature modules for specific functionalities
-│   └── ...                 # (customizable based on your needs)
-└── main.ts                 # Application entry point
+├── app/                                          # Core application module
+│   ├── modules/                                  # Feature modules for specific functionalities
+│   │    ├── auth/
+│   │    │    ├── controllers/
+│   │    │    │    ├── auth.controller.spec.ts
+│   │    │    │    └── auth.controller.ts
+│   │    │    ├── dto/
+│   │    │    │    └── signin.dto.ts
+│   │    │    ├── entities/
+│   │    │    │    └── auth.entity.ts
+│   │    │    ├── services/
+│   │    │    │    ├── auth.service.spec.ts
+│   │    │    │    └── auth.service.ts
+│   │    │    └── auth.module.ts
+│   │    └── users/
+│   │         └── ...
+│   └── app.modules.ts                            # Entity files (modules)
+├── common/                                       # Common modules, utilities, etc.
+│   └── logger
+│       ├── services/
+│       │   └── logger.service.ts
+│       └── logger.module.ts
+├── config/                                       # Environment and configuration management
+│   ├── cache/
+│   ├── database/
+│   │   └── postgres.ts
+│   ├── configurations.ts
+│   └── config.module.ts
+├── core/                                         # Application core files
+│   ├── decorators/
+│   │   ├── auth.decorator.ts
+│   │   └── role.decorator.ts
+│   ├── execptions/
+│   ├── filters/
+│   ├── guards/
+│   │   ├── auth.guard.ts
+│   │   └── role.guard.ts
+│   ├── interfaces/
+│   ├── middlewares/
+│   ├── pipes/
+│   ├── providers/
+│   ├── utils/
+│   │   └── roles.ts
+│   └── core.module.ts
+├── database/                                     # Database migaration and seeder files
+│   ├── migrations/
+│   └── seeders/
+├── jobs/                                         # Schedulers and Queue management
+│   └── ...                                       # (customizable based on your needs)
+└── main.ts                                       # Application entry point
 ```
 
 ## Customization
-* Create new feature modules within the features directory to organize your application logic.
-* Define your database entities (models) in the database directory.
+* Create new feature modules within the modules directory under app to organize your application logic.
+* Define your database entities (models) in the entities directory of your module directory.
 * Extend the app.module.ts to import your custom modules and configure the application further.
 
 ## Deployment
